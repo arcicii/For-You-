@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Gift Buat Viviii 😋</title>
+  <meta name="description" content="Archie - Script HTML by feeldream.id">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <meta name="description" content="Script HTML For You">
+  <meta property="og:title" content="This is for you ✨">
+  <meta property="og:description" content="Special Gift Just For You ✨">
+  <meta property="og:image" content="https://raw.githubusercontent.com/arcicii/my-audio/main/e81b291e441889698f2a87a5c0daf396.jpg8288103261">
+  <meta property="og:image:alt" content="Valentine's Day">
+  <meta property="og:url" content="kado.feeldream.id">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Handlee&family=Sriracha&display=swap" rel="stylesheet"><script src="https://htmlku.com/prod/typeit.js"></script><link rel="stylesheet" href="https://htmlku.com/prod/kado/style.css">
+  <style>
+.snoopy-wrap{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.snoopy{
+  position: absolute;
+  width: 34px;
+  opacity: 0.95;
+  animation: floatSnoopy linear infinite;
+}
+
+@keyframes floatSnoopy{
+  from{
+    bottom: -60px;
+    transform: translateX(0) rotate(0deg);
+  }
+  to{
+    bottom: 110%;
+    transform: translateX(50px) rotate(15deg);
+  }
+}
+</style>
+</head>
+<body>
+  
+  <!-- Audio -->
+<audio src="https://raw.githubusercontent.com/arcicii/my-audio/main/venus_1770946024400.mp3" id="linkmp3"loop></audio>
+  
+  <!-- Background / Wallpaper -->
+  <div class="background-overlay" data-src="https://raw.githubusercontent.com/arcicii/my-audio/main/e81b291e441889698f2a87a5c0daf396.jpg"></div>
+
+  <!-- Halaman 1: Envelope -->
+  <div id="hal1">
+    <div class="envlope-wrapper">
+      <div id="envelope" class="close">
+        <div class="front flap"></div>
+        <div class="front pocket"></div>
+        <div class="letter">
+          <div class="letter-corner corner-tl"></div>
+          <div class="letter-corner corner-br"></div>
+          <div class="message">
+            <p>Buatt Viviii! ✨</p>
+          </div>
+        </div>
+        <div class="hearts">
+          <div class="heart a1"></div>
+          <div class="heart a2"></div>
+          <div class="heart a3"></div>
+        </div>
+        <div class="sparkles">
+          <div class="sparkle s1"></div>
+          <div class="sparkle s2"></div>
+          <div class="sparkle s3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="reset">
+      <button style="border-radius: 20px;padding:4px 12px;margin-top:-25px" onclick="bukaEnvelope()">Buka?</button>
+    </div>
+  </div>
+
+  <!-- Halaman 2: Memory Game -->
+  <div id="hal2" class="kotak sembunyi">
+    <div class="decor decor-tl"></div>
+    <div class="decor decor-br"></div>
+    <canvas id="game-canvas"></canvas>
+    <h2 style="font-size:18.5px">A Little Game for You 🎁</h2>
+    <p style="font-size:14.5px">Balik 2 Kartu yang Sama! 😋</p>
+    <div id="kotakPesan"></div>
+    <div id="papanGame" class="papanGame"></div>
+    <p id="statusGame"></p>
+    <button id="lanjut" onclick="pindahHal(3)" class="sembunyi">Lihat Pesan Cinta!</button>
+    <button id="ulang" onclick="mulaiHal2()" class="tombolCadangan sembunyi">Coba Lagi!</button>
+  </div>
+
+  <!-- Halaman 3: Love Letter 💌 -->
+<div id="hal3" class="kotak sembunyi">
+  <div class="decor decor-tl"></div>
+  <div class="decor decor-br"></div>
+  
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+    
+    <!-- Title -->
+    <h2 style="font-size: 24px; color: #d44b4b; font-family: 'Handlee', cursive; margin-bottom: 20px;">
+      💌 Secret Message? 💌
+    </h2>
+    
+    <!-- Love Letter Envelope -->
+    <div style="position: relative; width: 260px; margin: 10px auto; cursor: pointer;" 
+         onclick="bukaSurat()">
+      
+      <!-- Envelope Body -->
+      <div style="position: relative; width: 100%; height: 180px; background: #ffc2c7; 
+                  border-radius: 20px; box-shadow: 0 10px 0 #e69ca0, 0 15px 25px rgba(212,75,75,0.3);
+                  border: 3px solid #ffb2b8;">
+        
+        <!-- Envelope Flap (Closed) -->
+        <div id="flapSurat" style="position: absolute; top: -2px; left: 0; width: 100%; height: 70px; 
+                                  background: #ffd1d4; clip-path: polygon(0% 0%, 50% 80%, 100% 0%);
+                                  border-bottom: 3px solid #ffb2b8; transition: transform 0.5s;
+                                  transform-origin: top; z-index: 10;">
+        </div>
+        
+        <!-- Heart on Envelope -->
+        <div style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); 
+                    font-size: 45px; color: #ff4f6b; z-index: 5;">
+          ❤️
+        </div>
+        
+        <!-- Letter Peeking Out -->
+        <div id="isiSurat" style="position: absolute; bottom: 15px; left: 20px; width: calc(100% - 40px); 
+                                height: 90px; background: white; border-radius: 8px;
+                                border-left: 8px solid #ffced2; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                display: flex; align-items: center; justify-content: center;
+                                transition: all 0.5s; z-index: 15;">
+          <span style="font-family: 'Handlee', cursive; color: #ac3f3f; font-size: 16px;">Just For You 🫶🏻</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Instruction -->
+    <p id="instruksiSurat" style="margin-top: 30px; font-size: 16px; color: #ac3f3f; background: rgba(255,255,255,0.8); 
+                                 padding: 10px 25px; border-radius: 50px;">
+      Click to open the secret message!!! 💕
+    </p>
+    
+    <!-- NEXT BUTTON - USING ORIGINAL pindahHal(4) -->
+    <button id="btnLanjutKePage4" onclick="pindahHal(4)" 
+            style="display: none; margin-top: 30px; background: #ff4d6d; color: white; 
+                   border: none; padding: 14px 35px; border-radius: 50px; font-size: 18px;
+                   font-weight: bold; box-shadow: 0 6px 0 #b13b4b; cursor: pointer;">
+      Open Me!!! 😙
+    </button>
+    
+  </div>
+</div>
+
+<script>
+// Simple function to open letter and show next button
+window.bukaSurat = function() {
+  // Open flap
+  const flap = document.getElementById('flapSurat');
+  if (flap) flap.style.transform = 'rotateX(180deg)';
+  
+  // Pull out letter
+  const surat = document.getElementById('isiSurat');
+  if (surat) {
+    surat.style.transform = 'translateY(-20px)';
+    surat.style.boxShadow = '0 15px 25px rgba(0,0,0,0.15)';
+  }
+  
+  // Change instruction text
+  const instruksi = document.getElementById('instruksiSurat');
+  if (instruksi) instruksi.innerHTML = '✨ Sekarang pencet tombol di bawah ✨';
+  
+  // SHOW THE NEXT BUTTON
+  const btn = document.getElementById('btnLanjutKePage4');
+  if (btn) btn.style.display = 'inline-block';
+}
+
+// Override original birthday function
+window.tiupLilin = function() {};
+</script>
+
+  <!-- Halaman 4: Pesan Akhir (Lama Hal3) -->
+  <div id="hal4" class="kotak sembunyi">
+    <div class="decor decor-tl"></div>
+    <div class="decor decor-br"></div>
+    <!-- Stiker Gif -->
+    <div id="stiker4" class="stiker">
+        <img id="stiker4a" src="https://raw.githubusercontent.com/arcicii/my-audio/main/f47bb487e55e54e9562a95d6e6206e35.gif" />
+        <img id="stiker4b" class="sembunyi" src="https://htmlku.com/0/panda/semprot.gif" />
+        <img id="stiker4c" class="sembunyi" src="https://htmlku.com/0/panda/terlope.gif" />
+    </div>
+    <div id="containerPesan">
+	    <p id="teksCinta"></p>
+	    <p id="pesanAkhir"></p>
+	    <p id="teksLucu"></p>
+    </div>
+    <button style="display:none" onclick="shareWa()">Kirim ke Dia!</button>
+  </div>
+  <div class="tombol">
+    <button style="padding:4px 12px;" onclick="balasWa()">💌 Reply</button>
+  </div>
+  
+  <!-- Snoopy Floating Animation -->
+<div class="snoopy-wrap" id="snoopyWrap">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+  <img src="https://raw.githubusercontent.com/arcicii/my-audio/main/Snoopy_Peanuts.png" class="snoopy">
+</div>
+
+  <script>
+    // Edit Icon Memory Game di Sini
+    const kartu = [
+	  { id: 3, icon: '🌺', pesan: '' },
+	  { id: 5, icon: '💍', pesan: '' },
+	  { id: 1, icon: '✨', pesan: '' },
+	  { id: 6, icon: '💘', pesan: '' },
+	  { id: 2, icon: '🧸', pesan: '' },
+	  { id: 4, icon: '💝', pesan: '' },
+	  { id: 1, icon: '✨', pesan: '' },
+	  { id: 3, icon: '🌺', pesan: '' },
+	  { id: 5, icon: '💍', pesan: '' },
+	  { id: 2, icon: '🧸', pesan: '' },
+	  { id: 4, icon: '💝', pesan: '' },
+	  { id: 6, icon: '💘', pesan: '' }
+	];
+
+    // Edit Kata-kata di Sini
+    const txtDoa = "<b style='font-size:20px'>Happy Valentine's Day Violette!!! ☺️🤏🏻</b>";
+    const txtPesanAkhir = "Hari iniii harii apaa yaaaa??? Yapsss benerrr, Hari Sabtuu. Tapi Sabtu inii spesial karenaaa obviously it is Valentine's Dayyy. Usually Valentine's Day kan kasihnyaa sesuatu yang sweet kayak coklatt or bungaaa, i was actually planning on giving you pink lilies (your favoritee) and moree butttt given the circumstances... Maybee next timeee ^^ and which is why i want to give you this not so secret letter that you are reading right nowww 😋<br><br>In this Valentine's Day i wanna say thank you for always being a really kind and genuine person. Maybe we're not that close yett but i feel like tiap kali i ngobrol or spend time with you i feel happy, seen, and understood in lots of waysss. I had lots of fun talking to you and getting to know more about you. I want you to know that lots of people love and care so much about you. They like you for who you are. Be the great and loving person that you are viiiii!!! 🫶🏻<br><br>I hope that in this Valentine's Day you will get lots of love from your loved ones and dearest friends and i wish that you can be the happiest girl aliveee. I also hope that we can get to know each other better and get along well. This letter may not be the best Valentine's gift but i really hope it will make your day 💫";
+    const txtLucu = "Anyways,<br><b>Have a great day today Violette😽 </b>Cuz ...<br><b style='font-size:18px'>You deserve it! 💕✨</b>";
+
+    const textWhatsapp = "I udahh bacaaa, maaciiwwwww yaaaa!!! 🥹🫶🏻";
+    
+  </script>
+  <script src="https://htmlku.com/prod/kado/script.js"></script>
+  <script>
+const snoopies = document.querySelectorAll('.snoopy');
+const total = snoopies.length;
+
+snoopies.forEach((snoopy, i) => {
+  const sectionWidth = 100 / total;
+  const min = sectionWidth * i;
+  const max = min + sectionWidth;
+
+  const randomLeft = min + Math.random() * sectionWidth;
+  const randomDelay = Math.random() * 10;
+  const randomDuration = 18 + Math.random() * 8;
+
+  snoopy.style.left = randomLeft + '%';
+  snoopy.style.animationDuration = randomDuration + 's';
+  snoopy.style.animationDelay = randomDelay + 's';
+});
+</script>
+</body>
+</html>
